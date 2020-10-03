@@ -4,9 +4,15 @@
 
 using namespace std;
 
-void PrintVectorPart(vector<int> v) {
-	auto it = find_if(v.begin(), v.end(), [](const int& el) {return el < 0; });
-	for (auto i = v.begin(); i < it; ++i) {
-		cout << *i << " ";
-	}
+void PrintVectorPart(const vector<int>& numbers) {
+  auto negative_it = find_if(
+    numbers.begin(), numbers.end(),
+    [](int number) {
+      return number < 0;
+    }
+  );
+
+  for (auto it = negative_it; it != numbers.begin(); ) {
+    cout << *(--it) << " ";
+  }
 }
